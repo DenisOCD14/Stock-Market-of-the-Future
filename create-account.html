@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create account — FutureMarket</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.9.0/dist/css/foundation.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/enhance.css" />
+</head>
+<body>
+
+  <div class="nav-wrap">
+    <div class="title-bar" id="navTitleBar" data-responsive-toggle="siteMenu" data-hide-for="large">
+      <div class="title-bar-left"><a class="brand" href="index.html"><span class="brand-mark">&#9670;</span>Future<span>Market</span></a></div>
+      <div class="title-bar-right"><button class="menu-icon" type="button" data-toggle="siteMenu" aria-label="Menu"></button></div>
+    </div>
+    <div class="top-bar" id="siteMenu">
+      <div class="grid-container">
+        <div class="nav-inner">
+          <a class="brand show-for-large" href="index.html"><span class="brand-mark">&#9670;</span>Future<span>Market</span></a>
+          <ul class="dropdown menu" data-dropdown-menu>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li class="is-dropdown-submenu-parent"><a href="investing.html">Topics</a>
+              <ul class="menu vertical">
+                <li><a href="investing.html">Investing</a></li>
+                <li><a href="personal-finance.html">Personal Finance</a></li>
+                <li><a href="retirement.html">Retirement</a></li>
+                <li><a href="economy.html">Economy</a></li>
+              </ul>
+            </li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <div class="nav-actions">
+            <a class="btn btn-ghost" href="login.html">Log in</a>
+            <a class="btn btn-primary" href="create-account.html">Get started</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="auth-wrap">
+    <div class="grid-container">
+      <div class="grid-x grid-margin-x align-middle">
+        <!-- benefits -->
+        <div class="cell large-5 show-for-large">
+          <span class="pill"><span class="dot"></span> Free forever</span>
+          <h1 style="font-size:2.4rem;line-height:1.1;margin-bottom:1rem">Join the investors building the <span class="text-mint">future</span>.</h1>
+          <p class="subtle mb-3">One free account unlocks everything FutureMarket offers.</p>
+          <ul class="check-list">
+            <li>Weekly briefings on the trends that move markets</li>
+            <li>Full library of guides across every topic</li>
+            <li>Calculators for investing, saving, and retirement</li>
+            <li>A community that invests for the long run</li>
+          </ul>
+        </div>
+
+        <!-- form -->
+        <div class="cell large-7">
+          <div class="auth-card" style="max-width:520px">
+            <div class="text-center mb-3 hide-for-large">
+              <a class="brand" href="index.html" style="justify-content:center"><span class="brand-mark">&#9670;</span>Future<span>Market</span></a>
+            </div>
+            <div class="form-card">
+              <h1 style="font-size:1.7rem;margin-bottom:0.2rem">Create your account</h1>
+              <p class="subtle" style="font-size:0.9rem">It takes less than a minute.</p>
+
+              <button class="btn social-btn"><i class="bi bi-google"></i> Sign up with Google</button>
+              <button class="btn social-btn"><i class="bi bi-apple"></i> Sign up with Apple</button>
+              <div class="input-divider">or with email</div>
+
+              <form data-abide novalidate>
+                <div data-abide-error class="callout alert" style="display:none;background:rgba(255,92,116,.1);border:1px solid rgba(255,92,116,.3);color:#FF5C74">
+                  <i class="bi bi-exclamation-circle"></i> Please fix the highlighted fields.
+                </div>
+                <div class="grid-x grid-margin-x">
+                  <div class="cell medium-6">
+                    <label>First name *
+                      <input type="text" placeholder="Ada" required>
+                      <span class="form-error">Required.</span>
+                    </label>
+                  </div>
+                  <div class="cell medium-6">
+                    <label>Last name *
+                      <input type="text" placeholder="Lovelace" required>
+                      <span class="form-error">Required.</span>
+                    </label>
+                  </div>
+                  <div class="cell small-12">
+                    <label>Email *
+                      <input type="email" placeholder="ada@email.com" required pattern="email">
+                      <span class="form-error">Enter a valid email.</span>
+                    </label>
+                  </div>
+                  <div class="cell small-12">
+                    <label>Password *
+                      <input type="password" id="password" placeholder="At least 8 characters" required pattern="^(?=.*[A-Za-z])(?=.*\d).{8,}$">
+                      <span class="form-error">Use 8+ characters with a letter and a number.</span>
+                    </label>
+                    <p class="help-text" style="font-size:0.78rem;margin-top:-0.3rem">8+ characters, mixing letters and numbers.</p>
+                  </div>
+                  <div class="cell small-12">
+                    <label>Confirm password *
+                      <input type="password" id="confirmPassword" placeholder="Re-enter your password" required data-equalto="password">
+                      <span class="form-error">Passwords must match.</span>
+                    </label>
+                  </div>
+                  <div class="cell small-12">
+                    <label>Experience level
+                      <select>
+                        <option value="">Optional — helps us tailor content</option>
+                        <option>Complete beginner</option>
+                        <option>Some experience</option>
+                        <option>Confident investor</option>
+                        <option>Finance professional</option>
+                      </select>
+                    </label>
+                  </div>
+                  <div class="cell small-12">
+                    <div class="form-check-row">
+                      <input type="checkbox" id="terms" required>
+                      <label for="terms">I agree to the Terms of Service and Privacy Policy, and understand FutureMarket provides educational content only — not financial advice. *</label>
+                    </div>
+                    <div class="form-check-row" style="margin-top:-0.4rem">
+                      <input type="checkbox" id="news">
+                      <label for="news">Send me the weekly market briefing (optional).</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Create account <i class="bi bi-arrow-right"></i></button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <p class="text-center subtle mt-3" style="font-size:0.9rem">Already have an account? <a href="login.html">Log in</a></p>
+            <p class="text-center" style="font-size:0.76rem;color:#5c6680;margin-top:0.8rem">This is a front-end demo. No data is collected, stored, or transmitted.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="grid-container">
+      <div class="footer-bottom" style="border-top:0;margin-top:0">
+        <div class="grid-x align-justify align-middle grid-margin-y">
+          <div class="cell medium-shrink">&copy; 2026 FutureMarket. All rights reserved.</div>
+          <div class="cell medium-shrink"><a href="about.html">About</a> &middot; <a href="contact.html">Contact</a> &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/what-input@5.2.12/dist/what-input.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.9.0/dist/js/foundation.min.js"></script>
+  <script src="js/scripts.js"></script>
+  <script src="js/enhance.js"></script>
+</body>
+</html>

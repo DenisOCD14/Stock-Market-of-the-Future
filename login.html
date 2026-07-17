@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log in — FutureMarket</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.9.0/dist/css/foundation.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/enhance.css" />
+</head>
+<body>
+
+  <div class="nav-wrap">
+    <div class="title-bar" id="navTitleBar" data-responsive-toggle="siteMenu" data-hide-for="large">
+      <div class="title-bar-left"><a class="brand" href="index.html"><span class="brand-mark">&#9670;</span>Future<span>Market</span></a></div>
+      <div class="title-bar-right"><button class="menu-icon" type="button" data-toggle="siteMenu" aria-label="Menu"></button></div>
+    </div>
+    <div class="top-bar" id="siteMenu">
+      <div class="grid-container">
+        <div class="nav-inner">
+          <a class="brand show-for-large" href="index.html"><span class="brand-mark">&#9670;</span>Future<span>Market</span></a>
+          <ul class="dropdown menu" data-dropdown-menu>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li class="is-dropdown-submenu-parent"><a href="investing.html">Topics</a>
+              <ul class="menu vertical">
+                <li><a href="investing.html">Investing</a></li>
+                <li><a href="personal-finance.html">Personal Finance</a></li>
+                <li><a href="retirement.html">Retirement</a></li>
+                <li><a href="economy.html">Economy</a></li>
+              </ul>
+            </li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <div class="nav-actions">
+            <a class="btn btn-ghost" href="login.html">Log in</a>
+            <a class="btn btn-primary" href="create-account.html">Get started</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="auth-wrap">
+    <div class="grid-container">
+      <div class="auth-card">
+        <div class="text-center mb-3">
+          <a class="brand" href="index.html" style="justify-content:center"><span class="brand-mark">&#9670;</span>Future<span>Market</span></a>
+          <h1 style="font-size:1.8rem;margin-top:1rem">Welcome back</h1>
+          <p class="subtle" style="font-size:0.95rem">Log in to your FutureMarket account.</p>
+        </div>
+        <div class="form-card">
+          <button class="btn social-btn"><i class="bi bi-google"></i> Continue with Google</button>
+          <button class="btn social-btn"><i class="bi bi-apple"></i> Continue with Apple</button>
+          <div class="input-divider">or with email</div>
+          <form data-abide novalidate>
+            <div data-abide-error class="callout alert" style="display:none;background:rgba(255,92,116,.1);border:1px solid rgba(255,92,116,.3);color:#FF5C74">
+              <i class="bi bi-exclamation-circle"></i> Check your details and try again.
+            </div>
+            <label>Email
+              <input type="email" id="loginEmail" placeholder="you@email.com" required pattern="email">
+              <span class="form-error">Enter a valid email.</span>
+            </label>
+            <label>Password
+              <input type="password" id="loginPassword" placeholder="Your password" required>
+              <span class="form-error">Please enter your password.</span>
+            </label>
+            <div class="grid-x align-justify align-middle mb-2">
+              <div class="cell shrink form-check-row" style="margin:0">
+                <input type="checkbox" id="remember"><label for="remember">Remember me</label>
+              </div>
+              <div class="cell shrink"><a href="#" style="font-size:0.85rem">Forgot password?</a></div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Log in <i class="bi bi-arrow-right"></i></button>
+          </form>
+        </div>
+        <p class="text-center subtle mt-3" style="font-size:0.9rem">New here? <a href="create-account.html">Create an account</a></p>
+        <p class="text-center" style="font-size:0.76rem;color:#5c6680;margin-top:1rem">This is a front-end demo. No credentials are collected, stored, or transmitted.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="grid-container">
+      <div class="footer-bottom" style="border-top:0;margin-top:0">
+        <div class="grid-x align-justify align-middle grid-margin-y">
+          <div class="cell medium-shrink">&copy; 2026 FutureMarket. All rights reserved.</div>
+          <div class="cell medium-shrink"><a href="about.html">About</a> &middot; <a href="contact.html">Contact</a> &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/what-input@5.2.12/dist/what-input.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.9.0/dist/js/foundation.min.js"></script>
+  <script src="js/scripts.js"></script>
+  <script src="js/enhance.js"></script>
+</body>
+</html>

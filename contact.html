@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — FutureMarket</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.9.0/dist/css/foundation.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/enhance.css" />
+</head>
+<body>
+
+  <div class="nav-wrap">
+    <div class="title-bar" id="navTitleBar" data-responsive-toggle="siteMenu" data-hide-for="large">
+      <div class="title-bar-left"><a class="brand" href="index.html"><span class="brand-mark">&#9670;</span>Future<span>Market</span></a></div>
+      <div class="title-bar-right"><button class="menu-icon" type="button" data-toggle="siteMenu" aria-label="Menu"></button></div>
+    </div>
+    <div class="top-bar" id="siteMenu">
+      <div class="grid-container">
+        <div class="nav-inner">
+          <a class="brand show-for-large" href="index.html"><span class="brand-mark">&#9670;</span>Future<span>Market</span></a>
+          <ul class="dropdown menu" data-dropdown-menu>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li class="is-dropdown-submenu-parent"><a href="investing.html">Topics</a>
+              <ul class="menu vertical">
+                <li><a href="investing.html">Investing</a></li>
+                <li><a href="personal-finance.html">Personal Finance</a></li>
+                <li><a href="retirement.html">Retirement</a></li>
+                <li><a href="economy.html">Economy</a></li>
+              </ul>
+            </li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <div class="nav-actions">
+            <a class="btn btn-ghost" href="login.html">Log in</a>
+            <a class="btn btn-primary" href="create-account.html">Get started</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header class="page-head">
+    <div class="grid-container inner">
+      <div class="breadcrumb-mini"><a href="index.html">Home</a> / Contact</div>
+      <h1>Let's <span class="text-mint">talk</span>.</h1>
+      <p class="subtle">Questions, feedback, press, or partnerships — we read everything. Reach out and a real person will get back to you.</p>
+    </div>
+  </header>
+
+  <section>
+    <div class="grid-container">
+      <div class="grid-x grid-margin-x">
+        <!-- info -->
+        <div class="cell large-4">
+          <h4 class="mb-3">Get in touch</h4>
+          <div class="contact-item"><div class="ic"><i class="bi bi-envelope-fill"></i></div><div><strong>Email us</strong><p class="subtle">hello@futuremarket.example<br>We reply within one business day.</p></div></div>
+          <div class="contact-item"><div class="ic"><i class="bi bi-headset"></i></div><div><strong>Support</strong><p class="subtle">support@futuremarket.example<br>For account &amp; login help.</p></div></div>
+          <div class="contact-item"><div class="ic"><i class="bi bi-megaphone-fill"></i></div><div><strong>Press &amp; media</strong><p class="subtle">press@futuremarket.example<br>Interviews and quotes welcome.</p></div></div>
+          <div class="contact-item"><div class="ic"><i class="bi bi-geo-alt-fill"></i></div><div><strong>Registered office</strong><p class="subtle">1 Exchange Plaza, Suite 2100<br>Global Financial District</p></div></div>
+        </div>
+
+        <!-- form -->
+        <div class="cell large-8">
+          <div class="form-card">
+            <h4 class="mb-0">Send us a message</h4>
+            <p class="subtle" style="font-size:0.9rem">Fields marked with * are required.</p>
+            <form data-abide novalidate>
+              <div data-abide-error class="callout alert" style="display:none;background:rgba(255,92,116,.1);border:1px solid rgba(255,92,116,.3);color:#FF5C74">
+                <i class="bi bi-exclamation-circle"></i> Please fix the errors below and try again.
+              </div>
+              <div class="grid-x grid-margin-x">
+                <div class="cell medium-6">
+                  <label>First name *
+                    <input type="text" placeholder="Ada" required>
+                    <span class="form-error">Please enter your first name.</span>
+                  </label>
+                </div>
+                <div class="cell medium-6">
+                  <label>Last name *
+                    <input type="text" placeholder="Lovelace" required>
+                    <span class="form-error">Please enter your last name.</span>
+                  </label>
+                </div>
+                <div class="cell medium-6">
+                  <label>Email *
+                    <input type="email" placeholder="ada@email.com" required pattern="email">
+                    <span class="form-error">Enter a valid email address.</span>
+                  </label>
+                </div>
+                <div class="cell medium-6">
+                  <label>Topic
+                    <select>
+                      <option value="">Choose one…</option>
+                      <option>General question</option>
+                      <option>Account &amp; login help</option>
+                      <option>Press &amp; media</option>
+                      <option>Partnership</option>
+                      <option>Feedback</option>
+                    </select>
+                  </label>
+                </div>
+                <div class="cell small-12">
+                  <label>Message *
+                    <textarea rows="5" placeholder="How can we help?" required></textarea>
+                    <span class="form-error">Please enter a message.</span>
+                  </label>
+                </div>
+                <div class="cell small-12">
+                  <div class="form-check-row">
+                    <input type="checkbox" id="agree" required>
+                    <label for="agree">I understand FutureMarket provides educational content only, not financial advice. *</label>
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-lg"><i class="bi bi-send-fill"></i> Send message</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="grid-container">
+      <div class="grid-x grid-margin-x grid-margin-y">
+        <div class="cell medium-6 large-4">
+          <a class="brand" href="index.html"><span class="brand-mark">&#9670;</span>Future<span>Market</span></a>
+          <p class="footer-brand-text">Independent research and education on the technologies reshaping global markets — AI, tokenization, and the decentralized economy.</p>
+          <div class="footer-social"><a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a><a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a><a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a><a href="#" aria-label="RSS"><i class="bi bi-rss"></i></a></div>
+        </div>
+        <div class="cell small-6 medium-3 large-2"><h5>Topics</h5><ul><li><a href="investing.html">Investing</a></li><li><a href="personal-finance.html">Personal Finance</a></li><li><a href="retirement.html">Retirement</a></li><li><a href="economy.html">Economy</a></li></ul></div>
+        <div class="cell small-6 medium-3 large-2"><h5>Company</h5><ul><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="login.html">Log in</a></li><li><a href="create-account.html">Create account</a></li></ul></div>
+        <div class="cell medium-6 large-4">
+          <h5>Stay ahead</h5>
+          <p class="subtle" style="font-size:0.9rem">Weekly market briefings, no spam.</p>
+          <form data-abide novalidate>
+            <div data-abide-error class="callout alert" style="display:none;background:rgba(255,92,116,.1);border:0;color:#FF5C74">Enter a valid email.</div>
+            <div class="grid-x grid-margin-x"><div class="cell small-8"><input type="email" placeholder="you@email.com" required aria-label="Email"></div><div class="cell small-4"><button type="submit" class="btn btn-primary btn-block">Join</button></div></div>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="grid-x align-justify align-middle grid-margin-y">
+          <div class="cell medium-shrink">&copy; 2026 FutureMarket. All rights reserved.</div>
+          <div class="cell medium-shrink"><a href="#">Privacy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">Disclosures</a></div>
+        </div>
+        <p class="footer-disclaim">FutureMarket is an educational publication. Nothing on this site is investment, legal, or tax advice, or a recommendation to buy or sell any security. Forward-looking figures marked * are illustrative industry projections, not guarantees. Investing involves risk, including possible loss of principal. Always do your own research or consult a licensed advisor.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/what-input@5.2.12/dist/what-input.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.9.0/dist/js/foundation.min.js"></script>
+  <script src="js/scripts.js"></script>
+  <script src="js/enhance.js"></script>
+</body>
+</html>

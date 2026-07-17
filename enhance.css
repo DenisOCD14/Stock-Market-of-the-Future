@@ -1,0 +1,283 @@
+/* ============================================================
+   FutureMarket — enhance.css
+   Layered on top of styles.css. Implements 10 modern trends.
+   Each block is labelled with the trend it delivers.
+   Everything degrades gracefully and respects reduced-motion.
+   ============================================================ */
+
+/* ============================================================
+   1. FUNCTIONAL MICRO-INTERACTIONS
+   ============================================================ */
+
+/* Scroll reveal (JS adds .reveal, then .in when in view) */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.7,.3,1); }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+/* Button ripple + tactile press */
+.btn { position: relative; overflow: hidden; }
+.btn .ripple {
+  position: absolute; border-radius: 50%; transform: scale(0);
+  background: rgba(255,255,255,0.35); pointer-events: none;
+  animation: ripple .55s ease-out forwards;
+}
+.btn-primary .ripple { background: rgba(4,18,28,0.25); }
+@keyframes ripple { to { transform: scale(2.6); opacity: 0; } }
+.btn:active { transform: translateY(1px) scale(.985); }
+
+/* Nav link animated underline */
+.top-bar .menu > li > a { position: relative; }
+.top-bar .menu > li > a::after {
+  content: ""; position: absolute; left: .85rem; right: .85rem; bottom: .35rem;
+  height: 2px; background: var(--mint); transform: scaleX(0); transform-origin: left;
+  transition: transform .25s ease; border-radius: 2px;
+}
+.top-bar .menu > li > a:hover::after, .top-bar .menu > li > a.active::after { transform: scaleX(1); }
+
+/* Card tilt/tactile lift handled by JS transform; add smoothing */
+.panel { will-change: transform; }
+
+/* Count-up numbers get a subtle pop when they finish */
+.stat .num.counted { animation: pop .4s ease; }
+@keyframes pop { 50% { transform: scale(1.08); } }
+
+/* Magnetic-ish focus ring on interactive icons */
+.footer-social a, .contact-item .ic, .panel .ic { transition: transform .2s ease, box-shadow .2s ease, color .2s ease; }
+.footer-social a:hover { transform: translateY(-2px); }
+
+/* ============================================================
+   2. CUSTOM PERFORMANCE-DRIVEN ILLUSTRATIONS
+   Inline SVG only (no raster) — a few KB, animated via CSS.
+   ============================================================ */
+.illus { width: 100%; height: auto; display: block; }
+.illus-float { animation: floaty 6s ease-in-out infinite; }
+.illus-float.d2 { animation-delay: -2s; }
+.illus-float.d3 { animation-delay: -4s; }
+@keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+.illus-dash { stroke-dasharray: 6 8; animation: dash 3s linear infinite; }
+@keyframes dash { to { stroke-dashoffset: -56; } }
+.illus-spin { transform-origin: center; animation: spin 22s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.illus-pulse { animation: illpulse 3s ease-in-out infinite; transform-origin: center; }
+@keyframes illpulse { 0%,100% { opacity:.5; } 50% { opacity:1; } }
+
+/* ============================================================
+   3. BENTO GRID LAYOUT
+   ============================================================ */
+.bento {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 150px;
+  gap: 16px;
+}
+.bento .cell-b {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 1.4rem;
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.bento .cell-b:hover { transform: translateY(-4px); border-color: var(--line-2); box-shadow: 0 18px 40px rgba(0,0,0,.4); }
+.bento .cell-b h4 { margin: 0 0 .2rem; font-size: 1.05rem; }
+.bento .cell-b p { margin: 0; font-size: .85rem; }
+.bento .b-wide { grid-column: span 2; }
+.bento .b-tall { grid-row: span 2; }
+.bento .b-big  { grid-column: span 2; grid-row: span 2; }
+.bento .b-accent { background: linear-gradient(140deg, rgba(46,230,166,.16), rgba(56,189,248,.10)); }
+.bento .b-glow { position: absolute; inset: 0; opacity: .5; pointer-events: none; }
+.bento .b-num { font-size: 2.2rem; font-weight: 800; line-height: 1;
+  background: linear-gradient(120deg,var(--mint),var(--cyan)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.bento .b-ic { font-size: 1.6rem; color: var(--mint); position: absolute; top: 1.2rem; left: 1.4rem; }
+@media screen and (max-width: 63.9375em) { .bento { grid-template-columns: repeat(2, 1fr); } .bento .b-big { grid-column: span 2; } }
+@media screen and (max-width: 39.9375em) { .bento { grid-template-columns: 1fr; grid-auto-rows: 130px; } .bento .b-wide, .bento .b-big { grid-column: span 1; } .bento .b-big, .bento .b-tall { grid-row: span 1; } }
+
+/* ============================================================
+   4. LIGHT SKEUOMORPHISM & TACTILITY
+   Physical toggle switch + tactile pressable chips.
+   ============================================================ */
+.skeu-switch { display: inline-flex; align-items: center; gap: .6rem; cursor: pointer; user-select: none; }
+.skeu-switch .track {
+  width: 46px; height: 26px; border-radius: 20px; position: relative;
+  background: linear-gradient(#0b1020, #131b30);
+  box-shadow: inset 0 2px 5px rgba(0,0,0,.7), inset 0 -1px 0 rgba(255,255,255,.06);
+  transition: background .25s ease;
+}
+.skeu-switch .knob {
+  position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%;
+  background: linear-gradient(#f4f7ff, #c4ccdd);
+  box-shadow: 0 2px 4px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.9);
+  transition: left .22s cubic-bezier(.3,1.4,.5,1);
+}
+.skeu-switch.on .track { background: linear-gradient(var(--mint-d), var(--mint)); box-shadow: inset 0 2px 5px rgba(0,0,0,.35); }
+.skeu-switch.on .knob { left: 23px; }
+.skeu-switch .lbl { font-size: .82rem; color: var(--ink); font-weight: 600; }
+
+/* Tactile pressable quick-chips (also used by agent) */
+.tactile {
+  border: 1px solid var(--line-2);
+  background: linear-gradient(#151d31, #101728);
+  box-shadow: 0 1px 0 rgba(255,255,255,.05), 0 4px 10px rgba(0,0,0,.35);
+  border-radius: 10px;
+  transition: transform .08s ease, box-shadow .12s ease;
+}
+.tactile:active { transform: translateY(2px); box-shadow: inset 0 2px 6px rgba(0,0,0,.5); }
+
+/* ============================================================
+   5. AGENTIC WEB EXPERIENCE  +  9. ADVANCED VOICE UI
+   Injected assistant dock (bottom-right).
+   ============================================================ */
+.fm-launch {
+  position: fixed; right: 20px; bottom: 20px; z-index: 900;
+  width: 58px; height: 58px; border-radius: 50%; border: none; cursor: pointer;
+  background: linear-gradient(135deg, var(--mint), var(--cyan));
+  color: #04121C; font-size: 1.5rem;
+  box-shadow: 0 10px 30px rgba(46,230,166,.4);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform .2s ease;
+}
+.fm-launch:hover { transform: scale(1.07) rotate(6deg); }
+.fm-launch .pulse-ring { position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--mint); animation: ring 2.4s ease-out infinite; }
+@keyframes ring { 0% { transform: scale(1); opacity:.7; } 100% { transform: scale(1.7); opacity:0; } }
+
+.fm-agent {
+  position: fixed; right: 20px; bottom: 90px; z-index: 901;
+  width: 360px; max-width: calc(100vw - 40px);
+  background: var(--bg-2); border: 1px solid var(--line-2); border-radius: 18px;
+  box-shadow: 0 24px 70px rgba(0,0,0,.6);
+  transform: translateY(16px) scale(.98); opacity: 0; pointer-events: none;
+  transition: transform .24s cubic-bezier(.2,.9,.3,1), opacity .24s ease;
+  overflow: hidden;
+}
+.fm-agent.open { transform: none; opacity: 1; pointer-events: auto; }
+.fm-agent-head { padding: 1rem 1.2rem; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: .6rem; }
+.fm-agent-head .a-mark { width: 30px; height: 30px; border-radius: 8px; background: linear-gradient(135deg,var(--mint),var(--cyan)); display:flex; align-items:center; justify-content:center; color:#04121C; }
+.fm-agent-head b { color:#fff; font-size:.95rem; } .fm-agent-head .st { font-size:.72rem; color: var(--mint); }
+.fm-agent-head .x { margin-left:auto; background:none; border:none; color:var(--muted); font-size:1.1rem; cursor:pointer; }
+.fm-log { padding: 1rem 1.2rem; max-height: 300px; overflow-y: auto; display: flex; flex-direction: column; gap: .6rem; }
+.fm-msg { font-size: .88rem; line-height: 1.45; padding: .6rem .8rem; border-radius: 12px; max-width: 85%; }
+.fm-msg.bot { background: var(--bg-3); color: var(--ink); border-bottom-left-radius: 4px; align-self: flex-start; }
+.fm-msg.me { background: linear-gradient(135deg,var(--mint),var(--mint-d)); color: #04121C; border-bottom-right-radius: 4px; align-self: flex-end; font-weight: 600; }
+.fm-msg a { color: var(--cyan); font-weight: 600; }
+.fm-chips { display: flex; flex-wrap: wrap; gap: .4rem; padding: 0 1.2rem .8rem; }
+.fm-chips button { font-size: .76rem; color: var(--ink); padding: .4rem .7rem; cursor: pointer; }
+.fm-input { display: flex; gap: .4rem; padding: .8rem 1rem 1rem; border-top: 1px solid var(--line); }
+.fm-input input { flex: 1; height: 2.6rem; margin: 0; }
+.fm-icon-btn { width: 2.6rem; height: 2.6rem; flex: 0 0 auto; border-radius: 9px; border: 1px solid var(--line-2); background: var(--bg-3); color: var(--ink); cursor: pointer; display:flex; align-items:center; justify-content:center; font-size: 1rem; }
+.fm-icon-btn.send { background: linear-gradient(135deg,var(--mint),var(--mint-d)); color:#04121C; border:none; }
+.fm-icon-btn.mic.listening { color: var(--red); border-color: var(--red); animation: micpulse 1s infinite; }
+@keyframes micpulse { 50% { box-shadow: 0 0 0 4px rgba(255,92,116,.25); } }
+.fm-settings { border-top: 1px solid var(--line); padding: .8rem 1.2rem 1rem; display: flex; flex-direction: column; gap: .7rem; }
+.fm-settings .row { display: flex; align-items: center; justify-content: space-between; }
+.fm-settings .row small { color: var(--muted); font-size: .72rem; }
+
+/* ============================================================
+   6. CARBON-AWARE SUSTAINABLE DESIGN + 7. "BARELY THERE" MINIMALISM
+   Eco mode strips motion, gradients, blur, decorative art.
+   The carbon pill reports an estimated footprint.
+   ============================================================ */
+.carbon-pill {
+  position: fixed; left: 20px; bottom: 20px; z-index: 900;
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(15,21,36,.9); border: 1px solid var(--line-2);
+  border-radius: 100px; padding: .5rem .9rem; cursor: pointer;
+  font-size: .78rem; color: var(--ink); backdrop-filter: blur(8px);
+}
+.carbon-pill .leaf { color: var(--mint); }
+.carbon-pill:hover { border-color: var(--mint); }
+
+body.eco-mode { --bg:#0c0f16; --bg-2:#0f131c; --bg-3:#141922; }
+body.eco-mode * { animation: none !important; transition: none !important; }
+body.eco-mode .hero::before, body.eco-mode .page-head::before,
+body.eco-mode .hero-grid-bg, body.eco-mode .b-glow,
+body.eco-mode .illus-decor, body.eco-mode .fm-launch .pulse-ring { display: none !important; }
+body.eco-mode .nav-wrap { backdrop-filter: none; background: #0c0f16; }
+body.eco-mode .carbon-pill { backdrop-filter: none; }
+body.eco-mode .hero h1 .grad, body.eco-mode .stat .num, body.eco-mode .b-num,
+body.eco-mode .text-mint { -webkit-text-fill-color: initial; background: none; color: var(--mint); }
+body.eco-mode .panel:hover, body.eco-mode .bento .cell-b:hover, body.eco-mode .card.event-card:hover { transform: none; box-shadow: none; }
+body.eco-mode .cta-band, body.eco-mode .b-accent { background: var(--bg-2); }
+body.eco-mode .ticker { display: none; }              /* barely-there: drop the animated ticker */
+body.eco-mode .illus-showcase { display: none; }      /* drop heavy illustration */
+body.eco-mode .btn-primary { background: var(--mint); }
+.eco-flag { display: none; font-size: .72rem; color: var(--mint); }
+body.eco-mode .eco-flag { display: inline; }
+
+/* ============================================================
+   8. AI-DRIVEN HYPER-PERSONALIZATION
+   Banner injected at top of pages when a profile exists.
+   ============================================================ */
+.perso-banner {
+  background: linear-gradient(120deg, rgba(46,230,166,.12), rgba(56,189,248,.08));
+  border-bottom: 1px solid var(--line);
+}
+.perso-banner .inner { display: flex; align-items: center; gap: 1rem; padding: .9rem 0; flex-wrap: wrap; }
+.perso-banner .av { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg,var(--mint),var(--cyan)); color:#04121C; display:flex; align-items:center; justify-content:center; font-weight:800; flex:0 0 auto; }
+.perso-banner b { color: #fff; }
+.perso-banner .rec { margin-left: auto; display: flex; gap: .5rem; flex-wrap: wrap; }
+.perso-banner .rec a { font-size: .82rem; }
+.perso-banner .dismiss { background:none; border:none; color: var(--muted); cursor:pointer; font-size:1rem; }
+
+/* ============================================================
+   PRELOADER — 5. DIAL-UP DELIGHT (first visit only)
+   ============================================================ */
+.fm-preload {
+  position: fixed; inset: 0; z-index: 2000; background: #05070d;
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  font-family: "SFMono-Regular", Consolas, monospace; color: var(--mint);
+  transition: opacity .5s ease;
+}
+.fm-preload.hide { opacity: 0; pointer-events: none; }
+.fm-preload .box { width: min(420px, 84vw); }
+.fm-preload .logo { font-size: 1.4rem; font-weight: 800; color:#fff; margin-bottom: 1rem; letter-spacing: .04em; }
+.fm-preload .logo span { color: var(--mint); }
+.fm-preload .lines { font-size: .8rem; line-height: 1.7; color: #7fe9c4; min-height: 96px; }
+.fm-preload .bar { height: 14px; border: 1px solid var(--mint); border-radius: 3px; margin-top: 1rem; padding: 2px; }
+.fm-preload .bar i { display: block; height: 100%; width: 0; background: repeating-linear-gradient(90deg, var(--mint) 0 8px, transparent 8px 12px); transition: width .2s linear; }
+.fm-preload .pct { font-size: .75rem; margin-top: .4rem; color: var(--muted); }
+.blink { animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ============================================================
+   Y2K / DIAL-UP THEME (togglable overlay skin)
+   ============================================================ */
+body.y2k {
+  background:
+    radial-gradient(circle at 20% 10%, #2a0a5e 0, transparent 40%),
+    radial-gradient(circle at 80% 90%, #0a3a6e 0, transparent 40%),
+    #10121f;
+  font-family: "Comic Sans MS", "Trebuchet MS", "Courier New", cursive;
+}
+body.y2k::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .5;
+  background-image: radial-gradient(#ffffff22 1px, transparent 1px); background-size: 22px 22px;
+}
+body.y2k h1, body.y2k h2, body.y2k .brand {
+  background: linear-gradient(#fff, #b8c6ff 45%, #6d7bd6 55%, #fff);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 0 rgba(0,0,0,.35);
+}
+body.y2k .nav-wrap { background: linear-gradient(#3a2c7a, #1c2452); border-bottom: 3px ridge #8ea2ff; }
+body.y2k .panel, body.y2k .bento .cell-b, body.y2k .form-card, body.y2k .card.event-card, body.y2k .feature-visual {
+  border: 3px ridge #7d8fe0; border-radius: 6px;
+  background: linear-gradient(#1b2350, #12193a);
+  box-shadow: 4px 4px 0 rgba(0,0,0,.4);
+}
+body.y2k .btn-primary { background: linear-gradient(#7CF5D0, #2EE6A6); border: 2px outset #bfffe9; border-radius: 4px; color:#04121C; }
+body.y2k .btn-ghost { border: 2px outset #8ea2ff; border-radius: 4px; }
+body.y2k .pill, body.y2k .tag { border-radius: 3px; }
+body.y2k .ticker { background: repeating-linear-gradient(90deg,#ff5c74,#f5b843,#2ee6a6,#38bdf8,#8b7cf6,#ff5c74 100%); }
+body.y2k .ticker-item, body.y2k .ticker-item .sym { color: #10121f; font-weight: 800; }
+.y2k-only { display: none; }
+body.y2k .y2k-only { display: block; }
+.y2k-bar {
+  text-align: center; font-family: "Courier New", monospace; font-size: .8rem;
+  color: #7fe9c4; padding: .5rem; background: #0a0d18; border-top: 2px groove #4a5aa8;
+}
+.y2k-bar .blink { color: var(--gold); }
+
+/* Respect reduced motion globally */
+@media (prefers-reduced-motion: reduce) {
+  .illus-float, .illus-dash, .illus-spin, .illus-pulse, .fm-launch .pulse-ring, .blink { animation: none !important; }
+}
